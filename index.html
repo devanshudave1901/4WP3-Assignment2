@@ -14,21 +14,192 @@
         background-attachment: fixed;
         margin: 0;
         padding: 0;
+
     }
+
     #card {
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 10px;
-        padding: 200px;
-        width: 100px;
-        margin: 250px 290px;
+        width: 30%;
+        margin: 50px 290px;
         text-align: center;
-        height: auto;
+        padding: 50px;
+        height: 50%;
+    }
+
+    #card-title {
+        font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        position: relative;
+        top: 30%;
+
+    }
+
+    #search-form input {
+        width: 80%;
+        padding: 10px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #search-form select {
+        width: 84%;
+        padding: 10px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: 'Arial', sans-serif;
+
+
+    }
+
+    #search-form option {
+        width: 80%;
+        padding: 10px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+
+        font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Style specific option using pseudo-classes */
+    option:hover {
+        background-color: lightgray;
+    }
+
+    #search-form label {
+        font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        margin-top: 20px;
+        display: block;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .row input {
+        width: 60% !important;
+    }
+
+    .row .column {
+        flex: 1;
+        margin: 0 10px;
+    }
+    .search-button {
+        margin-top: 30px;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 30px;
+        width: 80px;
+        background-color: #4CAF50;
+        color: white;
     }
 </style>
 <body>
-    <div id="card">
+<div id="card">
+    <h1 id="card-title">Search Recipe Smartly</h1>
+    <form id="search-form">
+        <!--            <label for="diet"></label><input type="text"  id="diet" placeholder="Enter Your Diet" name="diet" /><br>-->
+        <label for="diet"></label><select id="diet" name="diet">
+        <option value="">Select Diet</option>
+        <option value="Whole30">Whole30</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Paleo">Paleo</option>
+        <option value="Gluten-Free">Gluten Free</option>
+        <option value="Pescetarian">Pescetarian</option>
+    </select><br/>
 
+        <label for="cuisine"></label><select id="cuisine" name="cuisine">
+        <option value="">Select Cuisine</option>
+        <option value="Asian">Asian</option>
+        <option value="American">American</option>
+        <option value="British">British</option>
+        <option value="Indian">Indian</option>
+        <option value="Italian">Italian</option>
+        <option value="Mexican">Mexican</option>
+        <option value="French">French</option>
+        <option value="European">European</option>
+    </select>
+        <label for="intolerances"></label><select id="intolerances" name="intolerances">
+        <option value="">Select Intolerances</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Egg">Egg</option>
+        <option value="Gluten">Gluten</option>
+        <option value="Grain">Grain</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Sesame">Sesame</option>
+        <option value="Peanut">Peanut</option>
+        <option value="Soy">Soy</option>
+    </select><br/>
+        <div class="row">
+            <div class="column">
+                <label for="calories"></label><input type="number" id="calories"
+                                                     placeholder="Expected Calories" name="calories"/>
+            </div>
+            <div class="column">
 
-    </div>
+                <label for="readyTime"></label><input type="number" id="readyTime"
+                                                      placeholder="Est. Ready (min)"
+                                                      name="readyTime"/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="minCholesterol"></label><input type="number" id="minCholesterol"
+                                                     placeholder="Min. Cholesterol" name="minCholesterol  (mg)"/>
+            </div>
+            <div class="column">
+
+                <label for="maxCholesterol"></label><input type="number" id="maxCholesterol"
+                                                      placeholder="Max. Cholesterol  (mg)"
+                                                      name="maxCholesterol"/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="minProtein"></label><input type="number" id="minProtein"
+                                                           placeholder="Min. Protein (g)" name="minProtein"/>
+            </div>
+            <div class="column">
+
+                <label for="maxProtein"></label><input type="number" id="maxProtein"
+                                                           placeholder="Max. Protein (g)"
+                                                           name="maxProtein"/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="minFat"></label><input type="number" id="minFat"
+                                                       placeholder="Min. Fat (g)" name="minFat"/>
+            </div>
+            <div class="column">
+
+                <label for="maxFat"></label><input type="number" id="maxFat"
+                                                       placeholder="Max. Fat (g)"
+                                                       name="maxFat"/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="minSugar"></label><input type="number" id="minSugar"
+                                                       placeholder="Min. Sugar (g)" name="minSugar"/>
+            </div>
+            <div class="column">
+
+                <label for="maxSugar"></label><input type="number" id="maxSugar"
+                                                       placeholder="Max. Sugar (g)"
+                                                       name="maxSugar"/><br>
+            </div>
+        </div>
+
+            <button  class="search-button" type="submit">Search</button>
+
+    </form>
+</div>
 </body>
 </html>
