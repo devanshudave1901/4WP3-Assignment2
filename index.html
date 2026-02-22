@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Recipe Search</title>
+
 </head>
+
 <style>
 
     body {
@@ -102,7 +104,7 @@
 <body>
 <div id="card">
     <h1 id="card-title">Search Recipe Smartly</h1>
-    <form id="search-form">
+    <form id="search-form" >
         <!--            <label for="diet"></label><input type="text"  id="diet" placeholder="Enter Your Diet" name="diet" /><br>-->
         <label for="diet"></label><select id="diet" name="diet">
         <option value="">Select Diet</option>
@@ -197,9 +199,39 @@
             </div>
         </div>
 
-            <button  class="search-button" type="submit">Search</button>
+            <button id="searchRecipeButton" class="search-button" type="submit">Search</button>
 
     </form>
 </div>
+    <script>
+        async function makeRequest(event){
+            event.preventDefault();
+            const response = await fetch("/submit", {method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                diet: document.getElementById("diet").value,
+                cuisine: document.getElementById("cuisine").value,
+                intolerances: document.getElementById("intolerances").value,
+                calories: document.getElementById("calories").value,
+                readyTime: document.getElementById("readyTime").value,
+                minCholesterol: document.getElementById("minCholesterol").value,
+                maxCholesterol: document.getElementById("maxCholesterol").value,
+                minProtein: document.getElementById("minProtein").value,
+                maxProtein: document.getElementById("maxProtein").value,
+                minFat: document.getElementById("minFat").value,
+                maxFat: document.getElementById("maxFat").value,
+                minSugar: document.getElementById("minSugar").value,
+                maxSugar: document.getElementById("maxSugar").value
+            })});
+            const data = await response.json();
+                console.log(data)
+        }
+
+         const make_request = document.getElementById("searchRecipeButton");
+         make_request.addEventListener("click",makeRequest)
+    </script>
+
 </body>
 </html>
