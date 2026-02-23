@@ -1,0 +1,12 @@
+
+Reflection 
+
+
+-	Devanshu Dave
+
+
+I had a great learning experience by doing this assignment. I had the opportunity to work practically with Node.js, Express.js, and Ajax. I created the recipe search web app that gathers user information via a form and sends it to the backend. Using Axios, it hits the Web API endpoint and retrieves the information to display properly. 
+
+Throughout the learning process, I encountered an error that I had to debug and resolve. The error I am talking about is hash 9c36a82. I had to handle the case where, if I get no recipe from the API, I have to add a custom message with a new search button. I have to add an if-else to handle that at the end.  Another encounter occurred when I had to add event listeners for a new search after the results were displayed. I mistakenly put those lines of code before the HTML gets loaded on the web. Therefore, I realized this and solved the issue to ensure a smoother process. (hash ->  5f614ea)
+
+This whole assignment increased my confidence in these web technologies. Hence, it was a great experience.
