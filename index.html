@@ -96,16 +96,21 @@
         padding: 10px;
         border: 1px solid white;
         border-radius: 30px;
-        width: 80px;
         background-color: #4CAF50;
         color: white;
+    }
+    .recipeSummary{
+        font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+
+        display: block;
     }
 </style>
 <body>
 <div id="card">
     <h1 id="card-title">Search Recipe Smartly</h1>
     <form id="search-form" >
-        <!--            <label for="diet"></label><input type="text"  id="diet" placeholder="Enter Your Diet" name="diet" /><br>-->
         <label for="diet"></label><select id="diet" name="diet">
         <option value="">Select Diet</option>
         <option value="Whole30">Whole30</option>
@@ -200,7 +205,6 @@
         </div>
 
             <button id="searchRecipeButton" class="search-button" type="submit">Search</button>
-
     </form>
     <div id="results"></div>
 
@@ -230,20 +234,33 @@
             )});
             const  data  = await response.json();
             document.getElementById("search-form").style.display = "none";
+            document.getElementById("card-title").style.display = "none";
             document.getElementById("results").innerHTML = JSON.stringify(data, null, 2);
 
             <!--Constructing the html design to display results properly-->
-            const resultHtml = `<h2>Search Results</h2>` + `<ul>`
+            let resultHtml = `<h2>Search Results</h2>` + `<ul>`
                 + data.results.map(recipe => `<li><h3>${recipe.title}</h3>
             <img src="${recipe.image}" alt="${recipe.title}" style="width:200px;height:auto;">
             <p>Ready in ${recipe.readyInMinutes} minutes</p>
-            <p>Calories: ${recipe.nutrition.nutrients.find(n => n.name === "Calories")?.amount || 'N/A'}
-            kcal</p><p>Protein: ${recipe.nutrition.nutrients.find(n => n.name === "Protein")?.amount || 'N/A'} g</p>
+            <p>Calories: ${recipe.nutrition.nutrients.find(n => n.name === "Calories")?.amount || 'N/A'} kcal</p>
+            <p>Protein: ${recipe.nutrition.nutrients.find(n => n.name === "Protein")?.amount || 'N/A'} g</p>
             <p>Fat: ${recipe.nutrition.nutrients.find(n => n.name === "Fat")?.amount || 'N/A'} g</p>
-            <p>Sugar: ${recipe.nutrition.nutrients.find(n => n.name === "Sugar")?.amount || 'N/A'} g</p></li>`).join('') + `</ul>`;
+            <p>Sugar: ${recipe.nutrition.nutrients.find(n => n.name === "Sugar")?.amount || 'N/A'} g</p>
+            <p>Price: ${recipe.pricePerServing}</p>
+             <p class="recipeSummary">Recipe Summary : ${recipe.summary}</p>
+            </li>`).join('') + `</ul>` +
+                `<br/> <button id="newSearchButton" class="search-button" type="button">New Search</button>`;
+
+
+
             document.getElementById("results").innerHTML = resultHtml
 
-
+            const button = document.getElementById("newSearchButton");
+            button.addEventListener("click", function() {
+                document.getElementById("search-form").style.display = "block";
+                document.getElementById("card-title").style.display = "block";
+                document.getElementById("results").innerHTML = "";
+            });
 
 
         }

@@ -34,7 +34,7 @@ app.post("/submit", async function (req, res) {
     const maxFat = req.body.maxFat || 100;
     const minSugar = req.body.minSugar || 0;
     const maxSugar = req.body.maxSugar || 100;
-
+    const addRecipeInformation = true;
     const response1 = await axios.get('https://api.spoonacular.com/recipes/complexSearch?',
         {
         params: {
@@ -50,7 +50,8 @@ app.post("/submit", async function (req, res) {
              minSugar: minSugar,
 
              maxSugar: maxSugar,
-            number: number
+            number: number,
+                addRecipeInformation: addRecipeInformation
         }
     });
     console.log(response1.data);
