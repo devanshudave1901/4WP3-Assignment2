@@ -20,7 +20,7 @@ app.post("/submit", async function (req, res) {
 
     console.log(req.body);
 
-    const apikey= 'bd5ad30e5ac449b083d4b92070169568';
+    const apikey= 'c3d86dc0fc5245edb0c3f96e5b8696ca';
     const query = 'pasta';
     const number = 1;
     const diet = req.body.diet;
@@ -54,9 +54,19 @@ app.post("/submit", async function (req, res) {
                 addRecipeInformation: addRecipeInformation
         }
     });
-    console.log(response1.data);
-    res.json(response1.data);
-    //res.send(response1.data);
+
+
+    if(response1.data.results.length === 0){
+        res.json({message: "No recipes found matching the criteria.", resultNumber:0});
+
+    }
+    else{
+        console.log(response1.data);
+        res.json(response1.data);
+    }
+
+
+
 
 
 })
