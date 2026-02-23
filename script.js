@@ -20,7 +20,7 @@ app.post("/submit", async function (req, res) {
 
     console.log(req.body);
 
-    const apikey= 'c6e19990e5fc4c9694540b9247b0c56e';
+    const apikey= 'bd5ad30e5ac449b083d4b92070169568';
     const query = 'pasta';
     const number = 1;
     const diet = req.body.diet;
@@ -53,7 +53,7 @@ app.post("/submit", async function (req, res) {
             number: number
         }
     });
-    console.log("sending response");
+    console.log(response1.data);
     res.json(response1.data);
     //res.send(response1.data);
 

@@ -202,6 +202,8 @@
             <button id="searchRecipeButton" class="search-button" type="submit">Search</button>
 
     </form>
+    <div id="results"></div>
+
 </div>
     <script>
         async function makeRequest(event){
@@ -224,14 +226,25 @@
                 maxFat: document.getElementById("maxFat").value,
                 minSugar: document.getElementById("minSugar").value,
                 maxSugar: document.getElementById("maxSugar").value
-            })});
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log(data);
+            }
+            )});
+            const  data  = await response.json();
+            document.getElementById("search-form").style.display = "none";
+            document.getElementById("results").innerHTML = JSON.stringify(data, null, 2);
 
-                } else {
-                    console.error("Request failed with status: " + response.status);
-                }
+            <!--Constructing the html design to display results properly-->
+            const resultHtml = `<h2>Search Results</h2>` + `<ul>`
+                + data.results.map(recipe => `<li><h3>${recipe.title}</h3>
+            <img src="${recipe.image}" alt="${recipe.title}" style="width:200px;height:auto;">
+            <p>Ready in ${recipe.readyInMinutes} minutes</p>
+            <p>Calories: ${recipe.nutrition.nutrients.find(n => n.name === "Calories")?.amount || 'N/A'}
+            kcal</p><p>Protein: ${recipe.nutrition.nutrients.find(n => n.name === "Protein")?.amount || 'N/A'} g</p>
+            <p>Fat: ${recipe.nutrition.nutrients.find(n => n.name === "Fat")?.amount || 'N/A'} g</p>
+            <p>Sugar: ${recipe.nutrition.nutrients.find(n => n.name === "Sugar")?.amount || 'N/A'} g</p></li>`).join('') + `</ul>`;
+            document.getElementById("results").innerHTML = resultHtml
+
+
+
 
         }
 
