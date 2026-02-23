@@ -239,7 +239,7 @@
             document.getElementById("card-title").style.display = "none";
             document.getElementById("results").innerHTML = JSON.stringify(data, null, 2);
 
-            if(data.results.hasOwnProperty("resultNumber"))
+            if(data.results.length === 0)
             {
                 // displaying html error message
 

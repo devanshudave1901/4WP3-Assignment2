@@ -39,6 +39,7 @@ app.post("/submit", async function (req, res) {
         {
         params: {
             apiKey: apikey,
+            query: "fdfdfdfdfdfertete5",
             diet: diet,
             cuisine: cuisine,
              minCholesterol: minCholesterol,
@@ -55,15 +56,10 @@ app.post("/submit", async function (req, res) {
         }
     });
 
-
-    if(response1.data.results.length === 0){
-        res.json({message: "No recipes found matching the criteria.", resultNumber:0});
-
-    }
-    else{
         console.log(response1.data);
+
         res.json(response1.data);
-    }
+
 
 
 
