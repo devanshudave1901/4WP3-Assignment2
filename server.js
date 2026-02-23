@@ -39,7 +39,7 @@ app.post("/submit", async function (req, res) {
         {
         params: {
             apiKey: apikey,
-            query: "fdfdfdfdfdfertete5",
+
             diet: diet,
             cuisine: cuisine,
              minCholesterol: minCholesterol,
