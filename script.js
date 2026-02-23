@@ -18,20 +18,44 @@ app.listen(3000,()=>{
 
 app.post("/submit", async function (req, res) {
 
-
+    console.log(req.body);
 
     const apikey= 'c6e19990e5fc4c9694540b9247b0c56e';
     const query = 'pasta';
     const number = 1;
-    const response1 = await axios.get('https://api.spoonacular.com/recipes/complexSearch?', {
+    const diet = req.body.diet;
+    const cuisine = req.body.cuisine ;
+    const intolerances = req.body.intolerances;
+    const minCholesterol = req.body.minCholesterol  || 0;
+    const maxCholesterol = req.body.maxCholesterol || 0;
+    const minProtein = req.body.minProtein  || 10;
+    const maxProtein = req.body.maxProtein || 100;
+    const minFat = req.body.minFat || 1;
+    const maxFat = req.body.maxFat || 100;
+    const minSugar = req.body.minSugar || 0;
+    const maxSugar = req.body.maxSugar || 100;
+
+    const response1 = await axios.get('https://api.spoonacular.com/recipes/complexSearch?',
+        {
         params: {
             apiKey: apikey,
-            query: query,
+            diet: diet,
+            cuisine: cuisine,
+             minCholesterol: minCholesterol,
+             maxCholesterol: maxCholesterol,
+            minProtein: minProtein,
+            maxProtein: maxProtein,
+             minFat: minFat,
+            maxFat: maxFat,
+             minSugar: minSugar,
+
+             maxSugar: maxSugar,
             number: number
         }
     });
-    console.log(response1.data);
-
+    console.log("sending response");
+    res.json(response1.data);
+    //res.send(response1.data);
 
 
 })

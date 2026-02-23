@@ -225,8 +225,14 @@
                 minSugar: document.getElementById("minSugar").value,
                 maxSugar: document.getElementById("maxSugar").value
             })});
-            const data = await response.json();
-                console.log(data)
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+
+                } else {
+                    console.error("Request failed with status: " + response.status);
+                }
+
         }
 
          const make_request = document.getElementById("searchRecipeButton");
